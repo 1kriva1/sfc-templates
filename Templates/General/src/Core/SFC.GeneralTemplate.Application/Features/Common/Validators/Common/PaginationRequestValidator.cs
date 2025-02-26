@@ -3,7 +3,7 @@
 using SFC.GeneralTemplate.Application.Features.Common.Base;
 using SFC.GeneralTemplate.Application.Features.Common.Models.Find.Paging;
 
-namespace SFC.GeneralTemplate.Application.Features.Common.Validators;
+namespace SFC.GeneralTemplate.Application.Features.Common.Validators.Common;
 
 /// <summary>
 /// Validation for pagination and sorting values.

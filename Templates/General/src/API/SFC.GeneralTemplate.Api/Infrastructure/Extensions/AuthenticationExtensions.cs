@@ -42,6 +42,9 @@ public static class AuthenticationExtensions
         {
             options.AddGeneralPolicy(identitySettings.RequireClaims);
             options.AddOwnGeneralTemplatePolicy(identitySettings.RequireClaims);
+#if IncludePlayerInfrastructure
+            options.AddOwnPlayerPolicy(identitySettings.RequireClaims);
+#endif
         });
     }
 }

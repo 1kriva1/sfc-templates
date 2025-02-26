@@ -32,6 +32,9 @@ public class RabbitMqExchangesSettings
     public ExchangeSetting<IdentityExchangeValue> Identity { get; set; } = default!;
 
     public ExchangeSetting<GeneralTemplateExchangeValue> GeneralTemplate { get; set; } = default!;
+#if IncludePlayerInfrastructure
+    public ExchangeSetting<PlayerExchangeValue> Player { get; set; } = default!;
+#endif
 }
 
 public class ExchangeSetting<T>
