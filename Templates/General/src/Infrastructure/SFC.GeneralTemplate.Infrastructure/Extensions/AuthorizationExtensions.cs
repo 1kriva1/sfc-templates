@@ -18,4 +18,12 @@ public static class AuthorizationExtensions
         PolicyModel ownGeneralTemplate = AuthorizationPolicies.OwnGeneralTemplate(claims);
         options.AddPolicy(ownGeneralTemplate.Name, ownGeneralTemplate.Policy);
     }
+
+#if IncludePlayerInfrastructure
+    public static void AddOwnPlayerPolicy(this AuthorizationOptions options, IDictionary<string, IEnumerable<string>> claims)
+    {
+        PolicyModel ownTeam = AuthorizationPolicies.OwnPlayer(claims);
+        options.AddPolicy(ownTeam.Name, ownTeam.Policy);
+    }
+#endif
 }

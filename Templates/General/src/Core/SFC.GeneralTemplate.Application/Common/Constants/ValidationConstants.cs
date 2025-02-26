@@ -7,7 +7,15 @@ public static class ValidationConstants
 
     public const int TitleValueMaxLength = 150;
 
+    public const int CityValueMaxLength = 100;
+
+    public const int TagValueMaxLength = 20;
+
+    public const int TagsMaxLength = 50;
+
     public const int FileMaxSizeInBytes = 5242880;
+
+    public const int ExtensionValueMaxLength = 20;
 
     public const int PercentageMaxValue = 100;
 

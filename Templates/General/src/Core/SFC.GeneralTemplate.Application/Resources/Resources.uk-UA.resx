@@ -159,4 +159,16 @@
   <data name="GeneralTemplateNotFound" xml:space="preserve">
     <value>GeneralTemplateUA не знайдено.</value>
   </data>
+  <data name="MustNotBeEmpty" xml:space="preserve">
+    <value>Кожне значення з '{PropertyName}' не має бути порожнім.</value>
+  </data>
+  <data name="MustNotExceedCharactersSize" xml:space="preserve">
+    <value>Кожне значення з '{PropertyName}' має містити {MaxLength} символів або менше. Ви ввели {TotalLength} символів.</value>
+  </data>
+  <data name="InvalidDaysOfWeek" xml:space="preserve">
+    <value>Кожне значення з '{PropertyName}' має бути в діапазоні днів тижня.</value>
+  </data>
+  <data name="PlayerNotFound" xml:space="preserve">
+    <value>Гравець не знайдений.</value>
+  </data>
 </root>

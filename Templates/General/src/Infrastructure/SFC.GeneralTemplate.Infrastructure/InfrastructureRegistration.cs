@@ -13,6 +13,10 @@ using SFC.GeneralTemplate.Infrastructure.Services.Metadata;
 using SFC.GeneralTemplate.Application.Interfaces.Reference;
 using SFC.GeneralTemplate.Infrastructure.Services.Reference;
 using SFC.GeneralTemplate.Infrastructure.Services.Hosted;
+#if IncludePlayerInfrastructure
+using SFC.GeneralTemplate.Application.Interfaces.Player;
+using SFC.GeneralTemplate.Infrastructure.Services.Player;
+#endif
 
 namespace SFC.GeneralTemplate.Infrastructure;
 public static class InfrastructureRegistration
@@ -49,12 +53,21 @@ public static class InfrastructureRegistration
         builder.Services.AddTransient<IDateTimeService, DateTimeService>();
         builder.Services.AddTransient<IUserService, UserService>();
         builder.Services.AddTransient<IUserSeedService, UserSeedService>();
+#if IncludePlayerInfrastructure
+        builder.Services.AddTransient<IPlayerSeedService, PlayerSeedService>();
+#endif
 
         // grpc
         builder.Services.AddTransient<IIdentityService, IdentityService>();
+#if IncludePlayerInfrastructure
+        builder.Services.AddTransient<IPlayerService, PlayerService>();
+#endif
 
         // references
         builder.Services.AddScoped<IIdentityReference, IdentityReference>();
+#if IncludePlayerInfrastructure
+        builder.Services.AddScoped<IPlayerReference, PlayerReference>();
+#endif
 
         // hosted services
         builder.Services.AddHostedService<DatabaseResetHostedService>();
