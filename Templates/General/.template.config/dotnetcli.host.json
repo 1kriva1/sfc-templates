@@ -19,6 +19,10 @@
     "internalPort": {
       "longName": "internal-port",
       "shortName": "internal-p"
+    },
+    "nugetApiKey": {
+      "longName": "nuget-api-key",
+      "shortName": ""
     }
   }
 }

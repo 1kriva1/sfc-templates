@@ -10,7 +10,7 @@ $latest_nupkg_file = (Get-ChildItem -Attributes !Directory | Sort-Object -Descen
 
 $nupkg_file_name = $latest_nupkg_file.Name 
 
-dotnet nuget push $nupkg_file_name --api-key oy2j2wdbweqvhngmg7cqwe4sdntj56vedmalvillekqbxu --source https://api.nuget.org/v3/index.json
+dotnet nuget push $nupkg_file_name --api-key GeneralTemplateNugetApiKey --source https://api.nuget.org/v3/index.json
 
 cd "..\"
 
