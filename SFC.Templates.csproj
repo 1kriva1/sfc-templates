@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+ <PropertyGroup>
+    <PackageType>Template</PackageType>
+    <PackageVersion>1.0</PackageVersion>
+    <PackageId>SFC.Templates</PackageId>
+    <Title>SFC Templates</Title>
+    <Authors>Andrii Kryvoruk</Authors>
+    <Description>Templates to use when creating an application for SFC project.</Description>
+    <PackageTags>dotnet-new;templates;sfc</PackageTags>
+    <TargetFrameworks>net8.0;</TargetFrameworks>
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <ContentTargetFolders>content</ContentTargetFolders>
+    <NoDefaultExcludes>true</NoDefaultExcludes>
+    <NoWarn>$(NoWarn);NU5110;NU5111;NU5128;</NoWarn>
+   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Templates\General\**\*;" Exclude="Templates\General\**\bin\**;Templates\General\**\obj\**;Templates\General\**\.vs\**;Templates\General\**\.git\**;" />
+    <Compile Remove="**\*" />
+    <Compile Remove="dist\**" />
+    <EmbeddedResource Remove="dist\**" />
+    <None Remove="dist\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Templates\General\README.md">
+      <Pack>true</Pack>
+      <PackagePath>README.md</PackagePath>
+    </Content>
+  </ItemGroup>
+
+</Project>

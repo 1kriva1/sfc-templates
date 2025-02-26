@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.67.0" />
+    <PackageReference Include="Grpc.StatusProto" Version="2.67.0" />
+    <PackageReference Include="IdentityModel" Version="7.0.0" />
+    <PackageReference Include="IdentityModel.AspNetCore" Version="4.3.0" />
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.67.0" />
+    <PackageReference Include="MassTransit" Version="8.3.4" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.3.4" />
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.8.14" />
+    <PackageReference Include="Hangfire.Core" Version="1.8.14" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.8.14" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.0" />
+    <PackageReference Include="SFC.Data.Messages" Version="0.0.7" />
+    <PackageReference Include="SFC.Identity.Messages" Version="0.0.5" />
+    <PackageReference Include="SFC.Identity.Contracts" Version="0.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Contracts\SFC.GeneralTemplate.Contracts\SFC.GeneralTemplate.Contracts.csproj" />
+    <ProjectReference Include="..\..\Contracts\SFC.GeneralTemplate.Messages\SFC.GeneralTemplate.Messages.csproj" />
+    <ProjectReference Include="..\..\Core\SFC.GeneralTemplate.Application\SFC.GeneralTemplate.Application.csproj" />
+    <ProjectReference Include="..\SFC.GeneralTemplate.Infrastructure.Persistence\SFC.GeneralTemplate.Infrastructure.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

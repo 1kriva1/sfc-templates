@@ -1,0 +1,24 @@
+﻿{
+  "symbolInfo": {
+    "skipRestore": {
+      "longName": "no-restore",
+      "shortName": ""
+    },
+    "nameMultiple": {
+      "longName": "name-multiple",
+      "shortName": "n-multiple"
+    },
+    "nameUA": {
+      "longName": "name-ua",
+      "shortName": "n-ua"
+    },
+    "port": {
+      "longName": "port",
+      "shortName": "p"
+    },
+    "internalPort": {
+      "longName": "internal-port",
+      "shortName": "internal-p"
+    }
+  }
+}

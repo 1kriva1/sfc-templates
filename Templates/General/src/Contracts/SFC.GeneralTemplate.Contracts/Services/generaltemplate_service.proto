@@ -1,0 +1,15 @@
+﻿syntax = "proto3";
+
+package sfc_generaltemplate;
+
+import "Messages/Get/get_generaltemplate_request.proto";
+import "Messages/Get/get_generaltemplate_response.proto";
+import "Messages/Find/get_generaltemplates_request.proto";
+import "Messages/Find/get_generaltemplates_response.proto";
+
+option csharp_namespace = "SFC.GeneralTemplate.Contracts.Services";
+
+service GeneralTemplateService {
+    rpc GetGeneralTemplate(GetGeneralTemplateRequest) returns (GetGeneralTemplateResponse);
+    rpc GetGeneralTemplates(GetGeneralTemplatesRequest) returns (GetGeneralTemplatesResponse);
+}

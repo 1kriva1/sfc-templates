@@ -1,0 +1,11 @@
+﻿syntax = "proto3";
+
+package sfc_generaltemplate;
+
+option csharp_namespace = "SFC.GeneralTemplate.Contracts.Models.GeneralTemplate";
+
+message GeneralTemplate
+{
+    int64 id = 1;
+    string user_id = 2;
+}

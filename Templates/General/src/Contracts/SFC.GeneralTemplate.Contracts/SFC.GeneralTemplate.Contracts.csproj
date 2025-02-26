@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>SFC.GeneralTemplate.Contracts</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>Andrii Kryvoruk</Authors>
+    <Company>SFC</Company>
+    <Product>SFC</Product>
+    <PackageTags>Street Football Club;SFC;GeneralTemplate;Contracts</PackageTags>
+    <Description>
+      Contracts from GeneralTemplate service for SFC project
+    </Description>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Enums\sorting_direction.proto" />
+    <None Remove="Headers\auditable_header.proto" />
+    <None Remove="Headers\pagination_header.proto" />
+    <None Remove="Messages\Find\Filters\get_generaltemplates_filter.proto" />
+    <None Remove="Messages\Find\get_generaltemplates_request.proto" />
+    <None Remove="Messages\Find\get_generaltemplates_response.proto" />
+    <None Remove="Messages\Get\get_generaltemplate_request.proto" />
+    <None Remove="Messages\Get\get_generaltemplate_response.proto" />
+    <None Remove="Models\Common\pagination.proto" />
+    <None Remove="Models\Common\range_limit.proto" />
+    <None Remove="Models\Common\sorting.proto" />
+    <None Remove="Models\GeneralTemplate\generaltemplate.proto" />
+    <None Remove="Services\generaltemplate_service.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.29.3" />
+    <PackageReference Include="Grpc.Core.Api" Version="2.67.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.69.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Enums\sorting_direction.proto" />
+    <Protobuf Include="Headers\auditable_header.proto" />
+    <Protobuf Include="Headers\pagination_header.proto" />
+    <Protobuf Include="Messages\Find\Filters\get_generaltemplates_filter.proto" />
+    <Protobuf Include="Messages\Find\get_generaltemplates_request.proto" />
+    <Protobuf Include="Messages\Find\get_generaltemplates_response.proto" />
+    <Protobuf Include="Messages\Get\get_generaltemplate_request.proto" />
+    <Protobuf Include="Messages\Get\get_generaltemplate_response.proto" />
+    <Protobuf Include="Models\Common\pagination.proto" />
+    <Protobuf Include="Models\Common\range_limit.proto" />
+    <Protobuf Include="Models\Common\sorting.proto" />
+    <Protobuf Include="Models\GeneralTemplate\generaltemplate.proto" />
+    <Protobuf Include="Services\generaltemplate_service.proto" />
+  </ItemGroup>
+
+</Project>
