@@ -19,6 +19,10 @@
     "internalPort": {
       "longName": "internal-port",
       "shortName": "internal-p"
+    },
+    "IncludePlayerInfrastructure": {
+      "longName": "include-player-infrastructure",
+      "shortName": "include-player"
     }
   }
 }
