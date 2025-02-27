@@ -16,18 +16,27 @@ public static class PersistenceRegistration
         builder.Services.AddDbContext<DataDbContext>(builder.Configuration, builder.Environment);
         builder.Services.AddDbContext<IdentityDbContext>(builder.Configuration, builder.Environment);
         builder.Services.AddDbContext<GeneralTemplateDbContext>(builder.Configuration, builder.Environment);
+#if IncludePlayerInfrastructure
+        builder.Services.AddDbContext<PlayerDbContext>(builder.Configuration, builder.Environment);
+#endif
 
         // interceptors
         builder.Services.AddScoped<AuditableEntitySaveChangesInterceptor>();
         builder.Services.AddScoped<DispatchDomainEventsSaveChangesInterceptor>();
         builder.Services.AddScoped<DataEntitySaveChangesInterceptor>();
         builder.Services.AddScoped<UserEntitySaveChangesInterceptor>();
+#if IncludePlayerInfrastructure
+        builder.Services.AddScoped<PlayerEntitySaveChangesInterceptor>();
+#endif
 
         // contexts by interfaces
         builder.Services.AddScoped<IMetadataDbContext, MetadataDbContext>();
         builder.Services.AddScoped<IDataDbContext, DataDbContext>();
         builder.Services.AddScoped<IIdentityDbContext, IdentityDbContext>();
         builder.Services.AddScoped<IGeneralTemplateDbContext, GeneralTemplateDbContext>();
+#if IncludePlayerInfrastructure
+        builder.Services.AddScoped<IPlayerDbContext, PlayerDbContext>();
+#endif
 
         // repositories
         builder.Services.AddRepositories(builder.Configuration);

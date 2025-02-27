@@ -12,6 +12,9 @@ using SFC.GeneralTemplate.Infrastructure.Extensions;
 using SFC.GeneralTemplate.Infrastructure.Settings.RabbitMq;
 using SFC.GeneralTemplate.Messages.Commands;
 using SFC.Identity.Messages.Commands;
+#if IncludePlayerInfrastructure
+using SFC.Player.Messages.Commands.Player;
+#endif
 
 namespace SFC.GeneralTemplate.Infrastructure.Extensions;
 public static class MassTransitExtensions
@@ -64,6 +67,10 @@ public static class MassTransitExtensions
         {
             // "sfc.identity.users.seed.require"
             EndpointConvention.Map<RequireUsersSeed>(exchangesSettings.Identity.Value.RequireUsersSeed.GetExchangeEndpointUri());
+#if IncludePlayerInfrastructure
+            // "sfc.player.players.seed.require"
+            EndpointConvention.Map<RequirePlayersSeed>(exchangesSettings.Player.Value.RequirePlayersSeed.GetExchangeEndpointUri());
+#endif
         }
     }
 

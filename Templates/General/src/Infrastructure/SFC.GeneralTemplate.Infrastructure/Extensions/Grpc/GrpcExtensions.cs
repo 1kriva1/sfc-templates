@@ -17,6 +17,9 @@ using SFC.GeneralTemplate.Infrastructure.Constants;
 using SFC.GeneralTemplate.Infrastructure.Interceptors.Grpc.Client;
 
 using static SFC.Identity.Contracts.Services.IdentityService;
+#if IncludePlayerInfrastructure
+using static SFC.Player.Contracts.Services.PlayerService;
+#endif
 
 namespace SFC.GeneralTemplate.Infrastructure.Extensions.Grpc;
 
@@ -77,6 +80,11 @@ public static class GrpcExtensions
                 case Endpoint.Identity:
                     services.Services.AddGrpcClient<IdentityServiceClient>(endpoint.Value, settings.Retry, loggerFactory);
                     break;
+#if IncludePlayerInfrastructure
+                case Endpoint.Player:
+                    services.Services.AddGrpcClient<PlayerServiceClient>(endpoint.Value, settings.Retry, loggerFactory);
+                    break;
+#endif
                 default:
                     throw new NotImplementedException($"Not implemented Grpc Api for Id: {endpoint.Key}");
             };

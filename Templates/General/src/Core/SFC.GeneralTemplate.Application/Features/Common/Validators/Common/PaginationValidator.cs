@@ -2,7 +2,7 @@
 
 using SFC.GeneralTemplate.Application.Features.Common.Dto.Pagination;
 
-namespace SFC.GeneralTemplate.Application.Features.Common.Validators;
+namespace SFC.GeneralTemplate.Application.Features.Common.Validators.Common;
 
 /// <summary>
 /// Pagination validator.

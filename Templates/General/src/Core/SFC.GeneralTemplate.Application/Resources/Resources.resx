@@ -159,4 +159,16 @@
   <data name="GeneralTemplateNotFound" xml:space="preserve">
     <value>GeneralTemplate not found.</value>
   </data>
+  <data name="MustNotBeEmpty" xml:space="preserve">
+    <value>Each value from '{PropertyName}' must not be empty.</value>
+  </data>
+  <data name="MustNotExceedCharactersSize" xml:space="preserve">
+    <value>Each value from '{PropertyName}' must be {MaxLength} characters or fewer. You entered {TotalLength} characters.</value>
+  </data>
+  <data name="InvalidDaysOfWeek" xml:space="preserve">
+    <value>Each value from '{PropertyName}' must be in Days of Week range.</value>
+  </data>
+  <data name="PlayerNotFound" xml:space="preserve">
+    <value>Player not found.</value>
+  </data>
 </root>

@@ -65,6 +65,18 @@ public class Localization
                       GetValue(s_localizer?.GetString("MustNotExceedSize"),
                           "The length of '{0}' must be less or equal to {1}.")!;
 
+    public static string MustNotBeEmpty =>
+                      GetValue(s_localizer?.GetString("MustNotBeEmpty"),
+                          "Each value from '{PropertyName}' must not be empty.")!;
+
+    public static string MustNotExceedCharactersSize =>
+                      GetValue(s_localizer?.GetString("MustNotExceedCharactersSize"),
+                          "Each value from '{PropertyName}' must be {MaxLength} characters or fewer. You entered {TotalLength} characters.")!;
+
+    public static string InvalidDaysOfWeek =>
+                  GetValue(s_localizer?.GetString("InvalidDaysOfWeek"),
+                      "Each value from '{PropertyName}' must be in Days of Week range.")!;
+
     public static string TimeOutError =>
                     GetValue(s_localizer?.GetString("TimeOutError"),
                         "The timeout to complete the request has expired.")!;
@@ -72,6 +84,12 @@ public class Localization
     public static string GeneralTemplateNotFound =>
                     GetValue(s_localizer?.GetString("GeneralTemplateNotFound"),
                         "GeneralTemplate not found.")!;
+
+#if IncludePlayerInfrastructure
+    public static string PlayerNotFound =>
+                       GetValue(s_localizer?.GetString("PlayerNotFound"),
+                           "Player not found.")!;
+#endif
 
     private static string GetValue(LocalizedString? @string, string defaultValue)
     {

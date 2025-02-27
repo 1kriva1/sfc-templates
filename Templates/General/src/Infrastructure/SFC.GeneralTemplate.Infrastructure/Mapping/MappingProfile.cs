@@ -8,6 +8,13 @@ using SFC.GeneralTemplate.Application.Common.Extensions;
 using SFC.GeneralTemplate.Application.Features.Identity.Commands.Create;
 using SFC.GeneralTemplate.Application.Features.Identity.Commands.CreateRange;
 using SFC.GeneralTemplate.Application.Common.Dto.Identity;
+#if IncludePlayerInfrastructure
+using SFC.GeneralTemplate.Application.Features.Data.Common.Dto;
+using SFC.GeneralTemplate.Application.Features.Player.Commands.Create;
+using SFC.GeneralTemplate.Application.Features.Player.Commands.Update;
+using SFC.GeneralTemplate.Application.Features.Player.Commands.CreateRange;
+using SFC.GeneralTemplate.Application.Common.Dto.Player.General;
+#endif
 
 namespace SFC.GeneralTemplate.Infrastructure.Mapping;
 public class MappingProfile : BaseMappingProfile
@@ -47,6 +54,18 @@ public class MappingProfile : BaseMappingProfile
         CreateMapIdentityContracts();
 
         #endregion Identity
+
+#if IncludePlayerInfrastructure
+        #region Player
+
+        // messages
+        CreateMapPlayerMessages();
+
+        // contracts
+        CreateMapPlayerContracts();
+
+        #endregion Player
+#endif
     }
 
     #region Data
@@ -54,6 +73,14 @@ public class MappingProfile : BaseMappingProfile
     private void CreateMapDataMessages()
     {
         CreateMap<SFC.Data.Messages.Events.DataInitialized, ResetDataCommand>().IgnoreAllNonExisting();
+#if IncludePlayerInfrastructure
+        CreateMap<SFC.Data.Messages.Models.Common.DataValue, FootballPositionDto>();
+        CreateMap<SFC.Data.Messages.Models.Common.DataValue, GameStyleDto>();
+        CreateMap<SFC.Data.Messages.Models.Common.DataValue, StatCategoryDto>();
+        CreateMap<SFC.Data.Messages.Models.Common.DataValue, StatSkillDto>();
+        CreateMap<SFC.Data.Messages.Models.Stats.StatTypeDataValue, StatTypeDto>();
+        CreateMap<SFC.Data.Messages.Models.Common.DataValue, WorkingFootDto>();
+#endif
     }
 
     #endregion Data
@@ -78,4 +105,67 @@ public class MappingProfile : BaseMappingProfile
     }
 
     #endregion Identity
+
+#if IncludePlayerInfrastructure
+    #region Player
+
+    private void CreateMapPlayerMessages()
+    {
+        CreateMap<SFC.Player.Messages.Events.PlayerCreated, CreatePlayerCommand>().IgnoreAllNonExisting();
+
+        CreateMap<SFC.Player.Messages.Events.PlayerUpdated, UpdatePlayerCommand>().IgnoreAllNonExisting();
+
+        CreateMap<SFC.Player.Messages.Events.PlayerUpdated, CreatePlayerCommand>().IgnoreAllNonExisting();
+
+        CreateMap<IEnumerable<SFC.Player.Messages.Models.Player.Player>, CreatePlayersCommand>()
+            .ForMember(p => p.Players, d => d.MapFrom(z => z));
+
+        CreateMap<SFC.Player.Messages.Commands.Player.SeedPlayers, CreatePlayersCommand>();
+
+        CreateMap<SFC.Player.Messages.Models.Player.Player, PlayerDto>()
+            .ForPath(p => p.Stats.Values, d => d.MapFrom(z => z.Stats))
+            .ForPath(p => p.Stats.Points, d => d.MapFrom(z => z.Points))
+            .ForPath(p => p.Profile.General, d => d.MapFrom(z => z.GeneralProfile))
+            .ForPath(p => p.Profile.Football, d => d.MapFrom(z => z.FootballProfile))
+            .ForPath(p => p.Profile.General.Photo, d => d.MapFrom(z => z.Photo))
+            .ForPath(p => p.Profile.General.Availability, d => d.MapFrom(z => z.Availability))
+            .ForPath(p => p.Profile.General.Tags, d => d.MapFrom(z => z.Tags));
+
+        // stats
+        CreateMap<SFC.Player.Messages.Models.Player.PlayerStat, PlayerStatValueDto>()
+            .ForPath(p => p.Type, d => d.MapFrom(z => z.TypeId));
+        CreateMap<SFC.Player.Messages.Models.Player.PlayerStatPoints, PlayerStatPointsDto>();
+
+        // general profile
+        CreateMap<SFC.Player.Messages.Models.Player.PlayerGeneralProfile, PlayerGeneralProfileDto>();
+        CreateMap<SFC.Player.Messages.Models.Player.PlayerPhoto, PlayerPhotoDto>();
+        CreateMap<SFC.Player.Messages.Models.Player.PlayerAvailability, PlayerAvailabilityDto>();
+        CreateMap<SFC.Player.Messages.Models.Player.PlayerAvailableDay, DayOfWeek>().ConvertUsing(day => day.Day);
+        CreateMap<SFC.Player.Messages.Models.Player.PlayerTag, string>().ConvertUsing(tag => tag.Value);
+
+        // football profile
+        CreateMap<SFC.Player.Messages.Models.Player.PlayerFootballProfile, PlayerFootballProfileDto>()
+            .ForPath(p => p.AdditionalPosition, d => d.MapFrom(z => z.AdditionalPositionId))
+            .ForPath(p => p.Position, d => d.MapFrom(z => z.PositionId))
+            .ForPath(p => p.GameStyle, d => d.MapFrom(z => z.GameStyleId))
+            .ForPath(p => p.WorkingFoot, d => d.MapFrom(z => z.WorkingFootId));
+    }
+
+    private void CreateMapPlayerContracts()
+    {
+        CreateMap<long, SFC.Player.Contracts.Messages.Get.GetPlayerRequest>()
+            .ConvertUsing(id => new SFC.Player.Contracts.Messages.Get.GetPlayerRequest { Id = id });
+
+        CreateMap<SFC.Player.Contracts.Models.Get.GetPlayer, PlayerDto>();
+        CreateMap<SFC.Player.Contracts.Models.Get.GetPlayerProfile, PlayerProfileDto>();
+        CreateMap<SFC.Player.Contracts.Models.Get.GetPlayerGeneralProfile, PlayerGeneralProfileDto>();
+        CreateMap<SFC.Player.Contracts.Models.Common.Player.PlayerAvailability, PlayerAvailabilityDto>();
+        CreateMap<SFC.Player.Contracts.Models.Get.GetPlayerFootballProfile, PlayerFootballProfileDto>();
+        CreateMap<SFC.Player.Contracts.Models.Get.GetPlayerStats, PlayerStatsDto>();
+        CreateMap<SFC.Player.Contracts.Models.Get.GetPlayerStatPoints, PlayerStatPointsDto>();
+        CreateMap<SFC.Player.Contracts.Models.Common.Player.PlayerStatValue, PlayerStatValueDto>();
+    }
+
+    #endregion Player
+#endif
 }

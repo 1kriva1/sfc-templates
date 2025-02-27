@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{FA4FF039-62AF-4CEC-BCF9-081599262117}"
 	ProjectSection(SolutionItems) = preProject
-		test.ps1 = test.ps1
+		tools\post-action.cmd = tools\post-action.cmd
 		tools\update-contracts.ps1 = tools\update-contracts.ps1
 		tools\update-messages.ps1 = tools\update-messages.ps1
 	EndProjectSection
@@ -60,8 +60,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hooks", "hooks", "{8FB8D310-A7F0-46E8-9D93-C1C33DE50E88}"
 	ProjectSection(SolutionItems) = preProject
-		.husky\pre-commit = .husky\pre-commit
-		.husky\pre-push = .husky\pre-push
+		.husky\hooks\pre-commit = .husky\hooks\pre-commit
+		.husky\hooks\pre-push = .husky\hooks\pre-push
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFC.GeneralTemplate.Application.UnitTests", "tests\SFC.GeneralTemplate.Application.UnitTests\SFC.GeneralTemplate.Application.UnitTests.csproj", "{EB907C14-873C-4210-9003-DB4E034B9DD3}"

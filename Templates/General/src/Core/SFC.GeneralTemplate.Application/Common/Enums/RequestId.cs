@@ -13,5 +13,11 @@ public enum RequestId
     ResetData,
     // identity
     CreateUser,
-    CreateUsers    
+    CreateUsers,
+#if IncludePlayerInfrastructure
+    // player
+    CreatePlayer,
+    UpdatePlayer,
+    CreatePlayers
+#endif
 }

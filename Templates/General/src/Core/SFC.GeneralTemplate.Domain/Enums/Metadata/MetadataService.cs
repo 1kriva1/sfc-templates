@@ -3,7 +3,9 @@ public enum MetadataService
 {
     Data,
     Identity,
+#if IncludePlayerInfrastructure
     Player,
+#endif
     Team,
     GeneralTemplate
 }

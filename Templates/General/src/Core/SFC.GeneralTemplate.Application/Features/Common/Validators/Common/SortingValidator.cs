@@ -2,7 +2,7 @@
 
 using SFC.GeneralTemplate.Application.Features.Common.Dto.Common;
 
-namespace SFC.GeneralTemplate.Application.Features.Common.Validators;
+namespace SFC.GeneralTemplate.Application.Features.Common.Validators.Common;
 
 /// <summary>
 /// Sorting validator.

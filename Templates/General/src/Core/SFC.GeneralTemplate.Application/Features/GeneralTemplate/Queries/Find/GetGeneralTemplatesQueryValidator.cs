@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 
 using SFC.GeneralTemplate.Application.Features.Common.Validators;
+using SFC.GeneralTemplate.Application.Features.Common.Validators.Common;
 using SFC.GeneralTemplate.Application.Features.GeneralTemplate.Queries.Find.Dto.Filters;
 
 namespace SFC.GeneralTemplate.Application.Features.GeneralTemplate.Queries.Find;

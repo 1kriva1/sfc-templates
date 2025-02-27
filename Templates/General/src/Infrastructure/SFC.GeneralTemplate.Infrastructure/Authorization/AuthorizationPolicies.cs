@@ -2,6 +2,9 @@
 
 using SFC.GeneralTemplate.Infrastructure.Authorization.OwnGeneralTemplate;
 using SFC.GeneralTemplate.Infrastructure.Constants;
+#if IncludePlayerInfrastructure
+using SFC.GeneralTemplate.Infrastructure.Authorization.OwnPlayer;
+#endif
 
 namespace SFC.GeneralTemplate.Infrastructure.Authorization;
 public static class AuthorizationPolicies
@@ -23,6 +26,17 @@ public static class AuthorizationPolicies
 
         return BuildPolicyModel(Policy.OwnGeneralTemplate, builder);
     }
+
+#if IncludePlayerInfrastructure
+    public static PolicyModel OwnPlayer(IDictionary<string, IEnumerable<string>> claims)
+    {
+        AuthorizationPolicyBuilder builder = GetGeneralPolicyBuilder(claims)
+            .AddRequirements(new OwnPlayerRequirement());
+
+        return BuildPolicyModel(Policy.OwnPlayer, builder);
+    }
+#endif
+
 
     #endregion Public
 
