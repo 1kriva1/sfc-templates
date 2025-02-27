@@ -1,4 +1,4 @@
-﻿#if IncludePlayerInfrastructure
+﻿#if IncludePlayerInfrastructure 
 using Microsoft.EntityFrameworkCore;
 
 using SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.Player;
