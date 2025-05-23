@@ -2,8 +2,8 @@
 
 using MediatR;
 
-using SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.Identity;
-using SFC.GeneralTemplate.Domain.Entities.Identity;
+using SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.Identity.General;
+using SFC.GeneralTemplate.Domain.Entities.Identity.General;
 using SFC.GeneralTemplate.Domain.Events.Identity;
 
 namespace SFC.GeneralTemplate.Application.Features.Identity.Commands.CreateRange;

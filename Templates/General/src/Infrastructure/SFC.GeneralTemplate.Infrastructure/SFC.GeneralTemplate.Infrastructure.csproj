@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
+  <PropertyGroup>    
     <IncludePlayerInfrastructure>IsIncludePlayerInfrastructure</IncludePlayerInfrastructure>
+    <IncludeTeamInfrastructure>IsIncludeTeamInfrastructure</IncludeTeamInfrastructure>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,6 +26,11 @@
   <ItemGroup Condition="'$(IncludePlayerInfrastructure)' == True">
     <PackageReference Include="SFC.Player.Contracts" Version="0.0.2" />
     <PackageReference Include="SFC.Player.Messages" Version="0.0.8" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(IncludeTeamInfrastructure)' == True">
+    <PackageReference Include="SFC.Team.Contracts" Version="0.0.2" />
+    <PackageReference Include="SFC.Team.Messages" Version="0.0.17" />
   </ItemGroup>
 
   <ItemGroup>

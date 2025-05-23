@@ -5,7 +5,7 @@ using MediatR;
 
 using SFC.GeneralTemplate.Application.Common.Constants;
 using SFC.GeneralTemplate.Application.Common.Exceptions;
-using SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.Player;
+using SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.Player.General;
 
 namespace SFC.GeneralTemplate.Application.Features.Player.Commands.Update;
 

@@ -2,14 +2,14 @@
 
 package sfc_generaltemplate;
 
-import "Messages/Get/get_generaltemplate_request.proto";
-import "Messages/Get/get_generaltemplate_response.proto";
-import "Messages/Find/get_generaltemplates_request.proto";
-import "Messages/Find/get_generaltemplates_response.proto";
+import "Messages/GeneralTemplate/General/Get/get_generaltemplate_request.proto";
+import "Messages/GeneralTemplate/General/Get/get_generaltemplate_response.proto";
+import "Messages/GeneralTemplate/General/Find/get_generaltemplatemultiple_request.proto";
+import "Messages/GeneralTemplate/General/Find/get_generaltemplatemultiple_response.proto";
 
 option csharp_namespace = "SFC.GeneralTemplate.Contracts.Services";
 
 service GeneralTemplateService {
     rpc GetGeneralTemplate(GetGeneralTemplateRequest) returns (GetGeneralTemplateResponse);
-    rpc GetGeneralTemplates(GetGeneralTemplatesRequest) returns (GetGeneralTemplatesResponse);
+    rpc GetGeneralTemplateMultiple(GetGeneralTemplateMultipleRequest) returns (GetGeneralTemplateMultipleResponse);
 }

@@ -32,8 +32,13 @@ public class RabbitMqExchangesSettings
     public ExchangeSetting<IdentityExchangeValue> Identity { get; set; } = default!;
 
     public ExchangeSetting<GeneralTemplateExchangeValue> GeneralTemplate { get; set; } = default!;
+
 #if IncludePlayerInfrastructure
     public ExchangeSetting<PlayerExchangeValue> Player { get; set; } = default!;
+#endif
+
+#if IncludeTeamInfrastructure
+    public ExchangeSetting<TeamExchangeValue> Team { get; set; } = default!;
 #endif
 }
 
@@ -44,10 +49,13 @@ public class ExchangeSetting<T>
     public T Value { get; set; } = default!;
 }
 
-public class Exchange
+public class Message
 {
     public string Name { get; set; } = default!;
+}
 
+public class Exchange : Message
+{
     public string Type { get; set; } = default!;
 
     public string? RoutingKey { get; set; }

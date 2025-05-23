@@ -15,10 +15,13 @@ public static class PersistenceRegistration
         builder.Services.AddDbContext<MetadataDbContext>(builder.Configuration, builder.Environment);
         builder.Services.AddDbContext<DataDbContext>(builder.Configuration, builder.Environment);
         builder.Services.AddDbContext<IdentityDbContext>(builder.Configuration, builder.Environment);
-        builder.Services.AddDbContext<GeneralTemplateDbContext>(builder.Configuration, builder.Environment);
 #if IncludePlayerInfrastructure
         builder.Services.AddDbContext<PlayerDbContext>(builder.Configuration, builder.Environment);
 #endif
+#if IncludeTeamInfrastructure
+        builder.Services.AddDbContext<TeamDbContext>(builder.Configuration, builder.Environment);
+#endif
+        builder.Services.AddDbContext<GeneralTemplateDbContext>(builder.Configuration, builder.Environment);
 
         // interceptors
         builder.Services.AddScoped<AuditableEntitySaveChangesInterceptor>();
@@ -28,15 +31,21 @@ public static class PersistenceRegistration
 #if IncludePlayerInfrastructure
         builder.Services.AddScoped<PlayerEntitySaveChangesInterceptor>();
 #endif
+#if IncludeTeamInfrastructure
+        builder.Services.AddScoped<TeamEntitySaveChangesInterceptor>();
+#endif
 
         // contexts by interfaces
         builder.Services.AddScoped<IMetadataDbContext, MetadataDbContext>();
         builder.Services.AddScoped<IDataDbContext, DataDbContext>();
         builder.Services.AddScoped<IIdentityDbContext, IdentityDbContext>();
-        builder.Services.AddScoped<IGeneralTemplateDbContext, GeneralTemplateDbContext>();
 #if IncludePlayerInfrastructure
         builder.Services.AddScoped<IPlayerDbContext, PlayerDbContext>();
 #endif
+#if IncludeTeamInfrastructure
+        builder.Services.AddScoped<ITeamDbContext, TeamDbContext>();
+#endif
+        builder.Services.AddScoped<IGeneralTemplateDbContext, GeneralTemplateDbContext>();
 
         // repositories
         builder.Services.AddRepositories(builder.Configuration);

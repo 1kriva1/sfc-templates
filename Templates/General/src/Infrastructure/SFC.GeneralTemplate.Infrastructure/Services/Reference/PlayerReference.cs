@@ -2,7 +2,7 @@
 using AutoMapper;
 
 using SFC.GeneralTemplate.Application.Common.Dto.Player.General;
-using SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.Player;
+using SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.Player.General;
 using SFC.GeneralTemplate.Application.Interfaces.Player;
 using SFC.GeneralTemplate.Application.Interfaces.Reference;
 

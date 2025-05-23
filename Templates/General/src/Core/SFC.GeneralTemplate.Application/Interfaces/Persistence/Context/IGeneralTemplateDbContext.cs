@@ -5,5 +5,14 @@
 /// </summary>
 public interface IGeneralTemplateDbContext : IDbContext
 {
+    #region General
+
     IQueryable<GeneralTemplateEntity> GeneralTemplateMultiple { get; }
+
+    #endregion
+#if IncludeDataInfrastructure
+    #region Data
+
+    #endregion Data
+#endif
 }

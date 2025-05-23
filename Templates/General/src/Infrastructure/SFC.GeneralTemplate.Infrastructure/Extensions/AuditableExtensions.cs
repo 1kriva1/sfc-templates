@@ -1,10 +1,10 @@
-﻿using SFC.GeneralTemplate.Application.Features.Common.Dto.Base;
+﻿using SFC.GeneralTemplate.Application.Common.Dto.Common;
 using SFC.Identity.Contracts.Headers;
 
 namespace SFC.GeneralTemplate.Infrastructure.Extensions;
 public static class AuditableExtensions
 {
-    public static void SetAuditableProperties(this BaseAuditableDto value, AuditableHeader header)
+    public static void SetAuditableProperties(this AuditableDto value, AuditableHeader header)
     {
         value.CreatedDate = header.CreatedDate.ToDateTime();
         value.CreatedBy = Guid.Parse(header.CreatedBy);

@@ -5,6 +5,9 @@ using SFC.GeneralTemplate.Infrastructure.Constants;
 #if IncludePlayerInfrastructure
 using SFC.GeneralTemplate.Infrastructure.Authorization.OwnPlayer;
 #endif
+#if IncludeTeamInfrastructure
+using SFC.GeneralTemplate.Infrastructure.Authorization.OwnTeam;
+#endif
 
 namespace SFC.GeneralTemplate.Infrastructure.Authorization;
 public static class AuthorizationPolicies
@@ -37,6 +40,15 @@ public static class AuthorizationPolicies
     }
 #endif
 
+#if IncludeTeamInfrastructure
+    public static PolicyModel OwnTeam(IDictionary<string, IEnumerable<string>> claims)
+    {
+        AuthorizationPolicyBuilder builder = GetGeneralPolicyBuilder(claims)
+            .AddRequirements(new OwnTeamRequirement());
+
+        return BuildPolicyModel(Policy.OwnTeam, builder);
+    }
+#endif
 
     #endregion Public
 

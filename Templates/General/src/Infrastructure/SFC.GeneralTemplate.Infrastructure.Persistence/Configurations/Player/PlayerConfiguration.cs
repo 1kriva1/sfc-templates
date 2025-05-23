@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SFC.GeneralTemplate.Infrastructure.Persistence.Configurations.Base;
-using SFC.GeneralTemplate.Domain.Entities.Player;
+using SFC.GeneralTemplate.Domain.Entities.Player.General;
 using SFC.GeneralTemplate.Infrastructure.Persistence.Constants;
 using SFC.GeneralTemplate.Domain.Entities.Identity;
 

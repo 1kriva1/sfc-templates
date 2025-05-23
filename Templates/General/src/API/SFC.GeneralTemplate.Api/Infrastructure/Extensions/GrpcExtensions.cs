@@ -1,5 +1,4 @@
-﻿using SFC.GeneralTemplate.Api.Infrastructure.Extensions;
-using SFC.GeneralTemplate.Api.Services;
+﻿using SFC.GeneralTemplate.Api.Services;
 using SFC.GeneralTemplate.Infrastructure.Constants;
 using SFC.GeneralTemplate.Infrastructure.Extensions;
 using SFC.GeneralTemplate.Infrastructure.Settings;
@@ -14,12 +13,19 @@ public static class GrpcExtensions
 
         if (settings?.Endpoints?.TryGetValue(SettingConstants.KestrelInternalEndpoint, out KestrelEndpointSettings? endpoint) ?? false)
         {
+#if IncludeDataInfrastructure
+            app.MapGrpcService<GeneralTemplateDataService>()
+               .MapInternalService(endpoint.Url);
+#endif
             app.MapGrpcService<GeneralTemplateService>()
                .MapInternalService(endpoint.Url);
         }
         else
         {
-            app.MapGrpcService<GeneralTemplateService>();
+#if IncludeDataInfrastructure
+            app.MapGrpcService<GeneralTemplateDataService>();
+#endif
+            app.MapGrpcService<GeneralTemplateService>();            
         }
 
         return app;

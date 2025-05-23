@@ -1,5 +1,5 @@
 ﻿using SFC.GeneralTemplate.Application.Common.Dto.Identity;
-using SFC.GeneralTemplate.Domain.Entities.Identity;
+using SFC.GeneralTemplate.Domain.Entities.Identity.General;
 
 namespace SFC.GeneralTemplate.Application.Interfaces.Reference;
 

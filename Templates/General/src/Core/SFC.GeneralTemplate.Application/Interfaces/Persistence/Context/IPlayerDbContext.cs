@@ -1,5 +1,5 @@
 ﻿#if IncludePlayerInfrastructure
-using SFC.GeneralTemplate.Domain.Entities.Player;
+using SFC.GeneralTemplate.Domain.Entities.Player.General;
 
 namespace SFC.GeneralTemplate.Application.Interfaces.Persistence.Context;
 public interface IPlayerDbContext : IDbContext

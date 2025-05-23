@@ -6,6 +6,7 @@ using SFC.GeneralTemplate.Application.Interfaces.Reference;
 using SFC.GeneralTemplate.Domain.Common.Interfaces;
 using SFC.GeneralTemplate.Application.Common.Exceptions;
 using SFC.GeneralTemplate.Application.Common.Constants;
+using SFC.GeneralTemplate.Infrastructure.Persistence.Extensions;
 
 namespace SFC.GeneralTemplate.Infrastructure.Persistence.Interceptors;
 public class PlayerEntitySaveChangesInterceptor(IPlayerReference playerReference) : SaveChangesInterceptor
@@ -35,18 +36,18 @@ public class PlayerEntitySaveChangesInterceptor(IPlayerReference playerReference
 
         foreach (EntityEntry<IPlayerEntity> entry in entries)
         {
-            if (entry.Entity.Player is null)
+            if (entry.State == EntityState.Added || entry.State == EntityState.Modified)
             {
-                Task<PlayerEntity> player = GetPlayer(entry.Entity.PlayerId, cancellationToken);
-
-                // just to check if player exist
-                entry.Entity.Player = player.Result;
-                context.Entry<PlayerEntity>(entry.Entity.Player).State = EntityState.Unchanged;
+                if (entry.Entity.Player is null)
+                {
+                    Task<PlayerEntity> player = GetPlayerAsync(entry.Entity.PlayerId, cancellationToken);
+                    entry.SetReference(context, player.Result);
+                }
             }
         }
     }
 
-    private async Task<PlayerEntity> GetPlayer(long id, CancellationToken cancellationToken = default)
+    private async Task<PlayerEntity> GetPlayerAsync(long id, CancellationToken cancellationToken = default)
     {
         return await _playerReference.GetAsync(id, cancellationToken).ConfigureAwait(true)
                     ?? throw new NotFoundException(Localization.PlayerNotFound);

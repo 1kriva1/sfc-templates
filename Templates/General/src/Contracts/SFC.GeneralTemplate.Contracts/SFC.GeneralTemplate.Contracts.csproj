@@ -13,20 +13,31 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <IncludeDataInfrastructure>IsIncludeDataInfrastructure</IncludeDataInfrastructure>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="Enums\sorting_direction.proto" />
     <None Remove="Headers\auditable_header.proto" />
-    <None Remove="Headers\pagination_header.proto" />
-    <None Remove="Messages\Find\Filters\get_generaltemplates_filter.proto" />
-    <None Remove="Messages\Find\get_generaltemplates_request.proto" />
-    <None Remove="Messages\Find\get_generaltemplates_response.proto" />
-    <None Remove="Messages\Get\get_generaltemplate_request.proto" />
-    <None Remove="Messages\Get\get_generaltemplate_response.proto" />
+    <None Remove="Headers\pagination_header.proto" />    
+    <None Remove="Messages\GeneralTemplate\General\Find\Filters\get_generaltemplatemultiple_filter.proto" />
+    <None Remove="Messages\GeneralTemplate\General\Find\get_generaltemplatemultiple_request.proto" />
+    <None Remove="Messages\GeneralTemplate\General\Find\get_generaltemplatemultiple_response.proto" />
+    <None Remove="Messages\GeneralTemplate\General\Get\get_generaltemplate_request.proto" />
+    <None Remove="Messages\GeneralTemplate\General\Get\get_generaltemplate_response.proto" />
     <None Remove="Models\Common\pagination.proto" />
     <None Remove="Models\Common\range_limit.proto" />
-    <None Remove="Models\Common\sorting.proto" />
-    <None Remove="Models\GeneralTemplate\generaltemplate.proto" />
+    <None Remove="Models\Common\sorting.proto" />    
+    <None Remove="Models\GeneralTemplate\generaltemplate.proto" />    
     <None Remove="Services\generaltemplate_service.proto" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(IncludeDataInfrastructure)' == True">
+    <None Remove="Models\GeneralTemplate\Data\data_value.proto" />
+    <None Remove="Messages\GeneralTemplate\Data\GetAll\get_all_generaltemplate_data_request.proto" />
+    <None Remove="Messages\GeneralTemplate\Data\GetAll\get_all_generaltemplate_data_response.proto" />
+    <None Remove="Services\generaltemplate_data_service.proto" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,17 +52,24 @@
   <ItemGroup>
     <Protobuf Include="Enums\sorting_direction.proto" />
     <Protobuf Include="Headers\auditable_header.proto" />
-    <Protobuf Include="Headers\pagination_header.proto" />
-    <Protobuf Include="Messages\Find\Filters\get_generaltemplates_filter.proto" />
-    <Protobuf Include="Messages\Find\get_generaltemplates_request.proto" />
-    <Protobuf Include="Messages\Find\get_generaltemplates_response.proto" />
-    <Protobuf Include="Messages\Get\get_generaltemplate_request.proto" />
-    <Protobuf Include="Messages\Get\get_generaltemplate_response.proto" />
+    <Protobuf Include="Headers\pagination_header.proto" />    
+    <Protobuf Include="Messages\GeneralTemplate\General\Find\Filters\get_generaltemplatemultiple_filter.proto" />
+    <Protobuf Include="Messages\GeneralTemplate\General\Find\get_generaltemplatemultiple_request.proto" />
+    <Protobuf Include="Messages\GeneralTemplate\General\Find\get_generaltemplatemultiple_response.proto" />
+    <Protobuf Include="Messages\GeneralTemplate\General\Get\get_generaltemplate_request.proto" />
+    <Protobuf Include="Messages\GeneralTemplate\General\Get\get_generaltemplate_response.proto" />
     <Protobuf Include="Models\Common\pagination.proto" />
     <Protobuf Include="Models\Common\range_limit.proto" />
     <Protobuf Include="Models\Common\sorting.proto" />
-    <Protobuf Include="Models\GeneralTemplate\generaltemplate.proto" />
+    <Protobuf Include="Models\GeneralTemplate\General\generaltemplate.proto" />
     <Protobuf Include="Services\generaltemplate_service.proto" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(IncludeDataInfrastructure)' == True">
+    <Protobuf Include="Models\GeneralTemplate\Data\data_value.proto" />
+    <Protobuf Include="Messages\GeneralTemplate\Data\GetAll\get_all_generaltemplate_data_request.proto" />
+    <Protobuf Include="Messages\GeneralTemplate\Data\GetAll\get_all_generaltemplate_data_response.proto" />
+    <Protobuf Include="Services\generaltemplate_data_service.proto" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 using SFC.GeneralTemplate.Application.Interfaces.Persistence.Context;
-using SFC.GeneralTemplate.Domain.Entities.Identity;
+using SFC.GeneralTemplate.Domain.Entities.Identity.General;
 using SFC.GeneralTemplate.Infrastructure.Persistence.Configurations.Identity;
 using SFC.GeneralTemplate.Infrastructure.Persistence.Constants;
 using SFC.GeneralTemplate.Infrastructure.Persistence.Interceptors;

@@ -91,6 +91,29 @@ public class Localization
                            "Player not found.")!;
 #endif
 
+#if IncludeTeamInfrastructure
+    public static string TeamNotFound =>
+                       GetValue(s_localizer?.GetString("TeamNotFound"),
+                           "Team not found.")!;
+#endif
+
+#if (IncludePlayerInfrastructure && IncludeTeamInfrastructure)
+    public static string PlayerAlreadyInTeam =>
+                       GetValue(s_localizer?.GetString("PlayerAlreadyInTeam"),
+                           "Player already in team.")!;
+
+    public static string TeamPlayerNotFound =>
+                       GetValue(s_localizer?.GetString("TeamPlayerNotFound"),
+                           "Team player not found.")!;
+#endif
+
+#if IncludeDataInfrastructure
+    public static string GetDataValue(string name)
+    {
+        return GetValue(s_localizer?.GetString(name), name)!;
+    }
+#endif
+
     private static string GetValue(LocalizedString? @string, string defaultValue)
     {
         return @string == null

@@ -20,9 +20,17 @@
       "longName": "internal-port",
       "shortName": "internal-p"
     },
+    "IncludeDataInfrastructure": {
+      "longName": "include-data-infrastructure",
+      "shortName": "include-data"
+    },
     "IncludePlayerInfrastructure": {
       "longName": "include-player-infrastructure",
       "shortName": "include-player"
+    },
+    "IncludeTeamInfrastructure": {
+      "longName": "include-team-infrastructure",
+      "shortName": "include-team"
     }
   }
 }

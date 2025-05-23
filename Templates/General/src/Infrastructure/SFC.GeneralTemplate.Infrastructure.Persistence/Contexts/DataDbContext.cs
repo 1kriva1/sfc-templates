@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 using SFC.GeneralTemplate.Application.Interfaces.Persistence.Context;
+#if (IncludePlayerInfrastructure || IncludeTeamInfrastructure)
 using SFC.GeneralTemplate.Domain.Entities.Data;
-#if IncludePlayerInfrastructure
 using SFC.GeneralTemplate.Infrastructure.Persistence.Configurations.Data;
 #endif
 using SFC.GeneralTemplate.Infrastructure.Persistence.Constants;
@@ -16,6 +16,7 @@ public class DataDbContext(
     : BaseDbContext<DataDbContext>(options, eventsInterceptor), IDataDbContext
 {
     private readonly DataEntitySaveChangesInterceptor _dataEntityInterceptor = dataEntityInterceptor;
+
 #if IncludePlayerInfrastructure
     public IQueryable<GameStyle> GameStyles => Set<GameStyle>();
 
@@ -28,6 +29,10 @@ public class DataDbContext(
     public IQueryable<StatType> StatTypes => Set<StatType>();
 
     public IQueryable<WorkingFoot> WorkingFoots => Set<WorkingFoot>();
+#endif
+
+#if IncludeTeamInfrastructure
+    public IQueryable<Shirt> Shirts => Set<Shirt>();
 #endif
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -62,6 +67,10 @@ public class DataDbContext(
         modelBuilder.ApplyConfiguration(new StatTypeConfiguration());
 
         modelBuilder.ApplyConfiguration(new WorkingFootConfiguration());
+#endif
+
+#if IncludeTeamInfrastructure
+        modelBuilder.ApplyConfiguration(new ShirtConfiguration());
 #endif
     }
 

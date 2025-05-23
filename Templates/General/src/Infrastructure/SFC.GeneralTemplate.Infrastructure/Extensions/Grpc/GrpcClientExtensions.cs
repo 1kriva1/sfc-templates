@@ -7,7 +7,7 @@ using Grpc.Core;
 
 using Microsoft.Extensions.Configuration;
 
-using SFC.GeneralTemplate.Application.Features.Common.Dto.Base;
+using SFC.GeneralTemplate.Application.Common.Dto.Common;
 using SFC.GeneralTemplate.Infrastructure.Constants;
 using SFC.Identity.Contracts.Headers;
 
@@ -57,7 +57,7 @@ public static class GrpcClientExtensions
         Metadata? metadata = default,
         CancellationToken cancellationToken = default)
         where TResponse : IMessage
-        where TDto : BaseAuditableDto
+        where TDto : AuditableDto
     {
         AsyncUnaryCall<TResponse> call = action(
             request,
@@ -109,7 +109,7 @@ public static class GrpcClientExtensions
         this TDto? value,
         AsyncUnaryCall<TR> call)
         where TR : IMessage
-        where TDto : BaseAuditableDto
+        where TDto : AuditableDto
     {
         AuditableHeader? header = await call.GetAuditableHeaderAsync()
                                             .ConfigureAwait(true);

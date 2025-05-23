@@ -1,11 +1,11 @@
 ﻿#if IncludePlayerInfrastructure
 using AutoMapper;
 
+using SFC.GeneralTemplate.Application.Common.Dto.Common;
 using SFC.GeneralTemplate.Application.Common.Mappings.Interfaces;
-using SFC.GeneralTemplate.Application.Features.Common.Dto.Base;
 
 namespace SFC.GeneralTemplate.Application.Common.Dto.Player.General;
-public class PlayerDto : BaseAuditableDto, IMapFromReverse<PlayerEntity>
+public class PlayerDto : AuditableDto, IMapFromReverse<PlayerEntity>
 {
     public long Id { get; set; }
 

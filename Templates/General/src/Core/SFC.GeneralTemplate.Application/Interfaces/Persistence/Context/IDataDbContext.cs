@@ -1,4 +1,6 @@
-﻿using SFC.GeneralTemplate.Domain.Entities.Data;
+﻿#if (IncludePlayerInfrastructure || IncludeTeamInfrastructure)
+using SFC.GeneralTemplate.Domain.Entities.Data;
+#endif
 
 namespace SFC.GeneralTemplate.Application.Interfaces.Persistence.Context;
 
@@ -20,5 +22,9 @@ public interface IDataDbContext : IDbContext
     IQueryable<StatType> StatTypes { get; }
 
     IQueryable<WorkingFoot> WorkingFoots { get; }
+#endif
+
+#if IncludeTeamInfrastructure
+    IQueryable<Shirt> Shirts { get; }
 #endif
 }

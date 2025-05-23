@@ -1,0 +1,12 @@
+﻿syntax = "proto3";
+
+package sfc_generaltemplate;
+
+import "Messages/GeneralTemplate/Data/GetAll/get_all_generaltemplate_data_request.proto";
+import "Messages/GeneralTemplate/Data/GetAll/get_all_generaltemplate_data_response.proto";
+
+option csharp_namespace = "SFC.GeneralTemplate.Contracts.Services";
+
+service GeneralTemplateDataService {
+    rpc GetAll (GetAllGeneralTemplateDataRequest) returns (GetAllGeneralTemplateDataResponse);
+}

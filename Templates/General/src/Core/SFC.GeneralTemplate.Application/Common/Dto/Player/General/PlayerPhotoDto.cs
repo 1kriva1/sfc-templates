@@ -5,7 +5,7 @@ using SFC.GeneralTemplate.Application.Common.Extensions;
 using SFC.GeneralTemplate.Application.Common.Mappings.Converters.File;
 using SFC.GeneralTemplate.Application.Common.Mappings.Interfaces;
 using SFC.GeneralTemplate.Application.Features.Common.Dto.Common;
-using SFC.GeneralTemplate.Domain.Entities.Player;
+using SFC.GeneralTemplate.Domain.Entities.Player.General;
 
 namespace SFC.GeneralTemplate.Application.Common.Dto.Player.General;
 public class PlayerPhotoDto : FileDto, IMapFromReverse<PlayerPhoto>

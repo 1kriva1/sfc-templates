@@ -39,7 +39,7 @@ public class DataInitializedDefinition : ConsumerDefinition<DataInitializedConsu
 {
     private readonly RabbitMqSettings _settings;
 
-    private Exchange Exchange { get { return _settings.Exchanges.Data.Value.Init; } }
+    private Exchange Exchange { get { return _settings.Exchanges.Data.Value.Data.Source.Initialized; } }
 
     public DataInitializedDefinition(IConfiguration configuration)
     {

@@ -1,4 +1,4 @@
-﻿using SFC.GeneralTemplate.Domain.Entities.Identity;
+﻿using SFC.GeneralTemplate.Domain.Entities.Identity.General;
 
 namespace SFC.GeneralTemplate.Application.Interfaces.Persistence.Context;
 

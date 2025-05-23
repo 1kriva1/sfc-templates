@@ -6,6 +6,8 @@ public enum MetadataService
 #if IncludePlayerInfrastructure
     Player,
 #endif
+#if IncludeTeamInfrastructure
     Team,
+#endif
     GeneralTemplate
 }

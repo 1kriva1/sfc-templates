@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
-using SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.GeneralTemplate;
+using SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.GeneralTemplate.General;
 using SFC.GeneralTemplate.Infrastructure.Extensions;
 
 namespace SFC.GeneralTemplate.Infrastructure.Authorization.OwnGeneralTemplate;

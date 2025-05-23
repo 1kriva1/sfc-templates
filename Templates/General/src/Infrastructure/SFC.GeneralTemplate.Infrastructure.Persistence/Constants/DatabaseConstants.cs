@@ -11,6 +11,10 @@ public static class DatabaseConstants
     public const string PlayerSchemaName = "Player";
 #endif
 
+#if IncludeTeamInfrastructure
+    public const string TeamSchemaName = "Team";
+#endif
+
     public const string MetadataSchemaName = "Metadata";
 
     public const string UserForeignKey = "UserId";
@@ -19,5 +23,9 @@ public static class DatabaseConstants
     public const string PlayerForeignKey = "PlayerId";
 
     public const string PlayerAvailabilityForeignKey = "AvailabilityId";
+#endif
+
+#if IncludeTeamInfrastructure
+    public const string TeamForeignKey = "TeamId";
 #endif
 }

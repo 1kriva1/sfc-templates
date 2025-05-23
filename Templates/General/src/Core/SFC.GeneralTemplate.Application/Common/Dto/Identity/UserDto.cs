@@ -1,9 +1,9 @@
-﻿using SFC.GeneralTemplate.Application.Common.Mappings.Interfaces;
-using SFC.GeneralTemplate.Application.Features.Common.Dto.Base;
-using SFC.GeneralTemplate.Domain.Entities.Identity;
+﻿using SFC.GeneralTemplate.Application.Common.Dto.Common;
+using SFC.GeneralTemplate.Application.Common.Mappings.Interfaces;
+using SFC.GeneralTemplate.Domain.Entities.Identity.General;
 
 namespace SFC.GeneralTemplate.Application.Common.Dto.Identity;
-public class UserDto : BaseAuditableDto, IMapTo<User>
+public class UserDto : AuditableDto, IMapTo<User>
 {
     public Guid Id { get; set; }
 }

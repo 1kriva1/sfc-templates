@@ -5,7 +5,6 @@ using SFC.GeneralTemplate.Application.Interfaces.Identity;
 using SFC.GeneralTemplate.Application.Features.Common.Base;
 
 namespace SFC.GeneralTemplate.Application.Common.Behaviours;
-
 public class LoggingBehaviour<TRequest, TResponse>(ILogger<LoggingBehaviour<TRequest, TResponse>> logger, IUserService userService)
     : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull, BaseRequest
 {

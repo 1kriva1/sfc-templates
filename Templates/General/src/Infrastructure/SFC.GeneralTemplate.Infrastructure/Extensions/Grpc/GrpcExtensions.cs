@@ -20,6 +20,9 @@ using static SFC.Identity.Contracts.Services.IdentityService;
 #if IncludePlayerInfrastructure
 using static SFC.Player.Contracts.Services.PlayerService;
 #endif
+#if IncludeTeamInfrastructure
+using static SFC.Team.Contracts.Services.TeamService;
+#endif
 
 namespace SFC.GeneralTemplate.Infrastructure.Extensions.Grpc;
 
@@ -83,6 +86,11 @@ public static class GrpcExtensions
 #if IncludePlayerInfrastructure
                 case Endpoint.Player:
                     services.Services.AddGrpcClient<PlayerServiceClient>(endpoint.Value, settings.Retry, loggerFactory);
+                    break;
+#endif
+#if IncludeTeamInfrastructure
+                case Endpoint.Team:
+                    services.Services.AddGrpcClient<TeamServiceClient>(endpoint.Value, settings.Retry, loggerFactory);
                     break;
 #endif
                 default:

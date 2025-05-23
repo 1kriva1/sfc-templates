@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using SFC.GeneralTemplate.Infrastructure.Persistence.Configurations.Base;
-using SFC.GeneralTemplate.Domain.Entities.Identity;
 using SFC.GeneralTemplate.Infrastructure.Persistence.Constants;
+using SFC.GeneralTemplate.Domain.Entities.Identity.General;
 
 namespace SFC.GeneralTemplate.Infrastructure.Persistence.Configurations.Identity;
 public class UserConfiguration(bool isSqlServer) : AuditableReferenceEntityConfiguration<User, Guid>

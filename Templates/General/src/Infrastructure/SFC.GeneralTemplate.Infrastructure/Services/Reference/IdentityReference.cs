@@ -2,9 +2,9 @@
 
 using SFC.GeneralTemplate.Application.Common.Dto.Identity;
 using SFC.GeneralTemplate.Application.Interfaces.Identity;
-using SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.Identity;
+using SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.Identity.General;
 using SFC.GeneralTemplate.Application.Interfaces.Reference;
-using SFC.GeneralTemplate.Domain.Entities.Identity;
+using SFC.GeneralTemplate.Domain.Entities.Identity.General;
 
 namespace SFC.GeneralTemplate.Infrastructure.Services.Reference;
 public class IdentityReference(

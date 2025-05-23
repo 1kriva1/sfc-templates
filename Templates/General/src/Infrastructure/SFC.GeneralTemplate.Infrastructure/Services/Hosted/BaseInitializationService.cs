@@ -4,11 +4,7 @@ using Microsoft.Extensions.Logging;
 namespace SFC.GeneralTemplate.Infrastructure.Services.Hosted;
 public abstract class BaseInitializationService(ILogger logger) : IHostedService
 {
-    private readonly ILogger _logger = logger;
-
-    public int MyProperty { get; set; }
-
-    protected ILogger Logger { get { return _logger; } }
+    protected ILogger Logger { get; } = logger;
 
     public virtual Task StartAsync(CancellationToken cancellationToken)
     {
