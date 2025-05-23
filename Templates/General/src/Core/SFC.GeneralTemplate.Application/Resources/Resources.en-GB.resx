@@ -171,4 +171,13 @@
   <data name="PlayerNotFound" xml:space="preserve">
     <value>Player not found.</value>
   </data>
+  <data name="PlayerAlreadyInTeam" xml:space="preserve">
+    <value>Player already in team.</value>
+  </data>
+  <data name="TeamNotFound" xml:space="preserve">
+    <value>Team not found.</value>
+  </data>
+  <data name="TeamPlayerNotFound" xml:space="preserve">
+    <value>Team player not found.</value>
+  </data>
 </root>

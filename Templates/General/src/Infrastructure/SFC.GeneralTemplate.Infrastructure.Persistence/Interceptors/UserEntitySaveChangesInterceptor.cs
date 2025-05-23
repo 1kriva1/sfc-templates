@@ -7,7 +7,7 @@ using SFC.GeneralTemplate.Application.Common.Exceptions;
 using SFC.GeneralTemplate.Application.Interfaces.Identity;
 using SFC.GeneralTemplate.Application.Interfaces.Reference;
 using SFC.GeneralTemplate.Domain.Common.Interfaces;
-using SFC.GeneralTemplate.Domain.Entities.Identity;
+using SFC.GeneralTemplate.Domain.Entities.Identity.General;
 
 namespace SFC.GeneralTemplate.Infrastructure.Persistence.Interceptors;
 public class UserEntitySaveChangesInterceptor(IUserService userService, IIdentityReference identityReference) : SaveChangesInterceptor

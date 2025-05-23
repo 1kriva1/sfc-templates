@@ -6,4 +6,7 @@ public static class Policy
 #if IncludePlayerInfrastructure
     public const string OwnPlayer = "Player";
 #endif
+#if IncludeTeamInfrastructure
+    public const string OwnTeam = "Team";
+#endif
 }

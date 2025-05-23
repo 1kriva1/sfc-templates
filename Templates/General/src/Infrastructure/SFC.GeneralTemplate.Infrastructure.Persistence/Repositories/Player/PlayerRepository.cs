@@ -1,9 +1,10 @@
-﻿#if IncludePlayerInfrastructure 
+﻿#if IncludePlayerInfrastructure
 using Microsoft.EntityFrameworkCore;
 
-using SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.Player;
+using SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.Player.General;
 using SFC.GeneralTemplate.Infrastructure.Persistence.Contexts;
 using SFC.GeneralTemplate.Infrastructure.Persistence.Extensions;
+using SFC.GeneralTemplate.Infrastructure.Persistence.Repositories.Common;
 
 namespace SFC.GeneralTemplate.Infrastructure.Persistence.Repositories.Player;
 public class PlayerRepository(PlayerDbContext context)

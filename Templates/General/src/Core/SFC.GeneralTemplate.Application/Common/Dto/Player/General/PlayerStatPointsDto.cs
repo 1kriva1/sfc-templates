@@ -3,7 +3,7 @@ using AutoMapper;
 
 using SFC.GeneralTemplate.Application.Common.Extensions;
 using SFC.GeneralTemplate.Application.Common.Mappings.Interfaces;
-using SFC.GeneralTemplate.Domain.Entities.Player;
+using SFC.GeneralTemplate.Domain.Entities.Player.General;
 
 namespace SFC.GeneralTemplate.Application.Common.Dto.Player.General;
 

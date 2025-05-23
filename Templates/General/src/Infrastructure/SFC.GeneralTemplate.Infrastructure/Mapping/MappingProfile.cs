@@ -8,12 +8,29 @@ using SFC.GeneralTemplate.Application.Common.Extensions;
 using SFC.GeneralTemplate.Application.Features.Identity.Commands.Create;
 using SFC.GeneralTemplate.Application.Features.Identity.Commands.CreateRange;
 using SFC.GeneralTemplate.Application.Common.Dto.Identity;
+using SFC.GeneralTemplate.Messages.Events.GeneralTemplate.General;
 #if IncludePlayerInfrastructure
-using SFC.GeneralTemplate.Application.Features.Data.Common.Dto;
 using SFC.GeneralTemplate.Application.Features.Player.Commands.Create;
 using SFC.GeneralTemplate.Application.Features.Player.Commands.Update;
 using SFC.GeneralTemplate.Application.Features.Player.Commands.CreateRange;
 using SFC.GeneralTemplate.Application.Common.Dto.Player.General;
+#endif
+#if IncludeTeamInfrastructure
+using SFC.GeneralTemplate.Application.Features.Team.General.Commands.CreateRange;
+using SFC.GeneralTemplate.Application.Common.Dto.Team.General;
+using SFC.GeneralTemplate.Application.Features.Team.General.Commands.Create;
+using SFC.GeneralTemplate.Application.Features.Team.General.Commands.Update;
+#endif
+#if (IncludePlayerInfrastructure || IncludeTeamInfrastructure)
+using SFC.GeneralTemplate.Application.Features.Data.Common.Dto;
+#endif
+#if (IncludePlayerInfrastructure && IncludeTeamInfrastructure)
+using SFC.GeneralTemplate.Application.Features.Team.Data.Commands.Reset;
+using SFC.GeneralTemplate.Application.Features.Team.Data.Common.Dto;
+using SFC.GeneralTemplate.Application.Features.Team.Player.Commands.Create;
+using SFC.GeneralTemplate.Application.Features.Team.Player.Commands.Update;
+using SFC.GeneralTemplate.Application.Features.Team.Player.Commands.CreateRange;
+using SFC.GeneralTemplate.Application.Common.Dto.Team.Player;
 #endif
 
 namespace SFC.GeneralTemplate.Infrastructure.Mapping;
@@ -66,6 +83,24 @@ public class MappingProfile : BaseMappingProfile
 
         #endregion Player
 #endif
+
+#if IncludeTeamInfrastructure
+        #region Team
+
+        CreateMapTeamMessages();
+
+        #endregion Team
+#endif
+
+        #region GeneralTemplate
+
+        // messages
+        CreateMapGeneralTemplateMessages();
+
+        // contracts
+        CreateMapGeneralTemplateContracts();
+
+        #endregion GeneralTemplate
     }
 
     #region Data
@@ -80,6 +115,9 @@ public class MappingProfile : BaseMappingProfile
         CreateMap<SFC.Data.Messages.Models.Common.DataValue, StatSkillDto>();
         CreateMap<SFC.Data.Messages.Models.Stats.StatTypeDataValue, StatTypeDto>();
         CreateMap<SFC.Data.Messages.Models.Common.DataValue, WorkingFootDto>();
+#endif
+#if IncludeTeamInfrastructure
+        CreateMap<SFC.Data.Messages.Models.Common.DataValue, ShirtDto>();
 #endif
     }
 
@@ -168,4 +206,105 @@ public class MappingProfile : BaseMappingProfile
 
     #endregion Player
 #endif
+
+#if IncludeTeamInfrastructure
+    #region Team
+
+    private void CreateMapTeamMessages()
+    {
+#if (IncludePlayerInfrastructure && IncludeTeamInfrastructure)
+        // data
+        // events
+        CreateMap<SFC.Team.Messages.Events.Data.DataInitialized, ResetTeamDataCommand>().IgnoreAllNonExisting();
+        // models
+        CreateMap<SFC.Team.Messages.Models.Common.DataValue, TeamPlayerStatusDto>();
+#endif
+
+        // domain
+        // team
+        // events
+        CreateMap<SFC.Team.Messages.Events.Team.General.TeamCreated, CreateTeamCommand>().IgnoreAllNonExisting();
+        CreateMap<SFC.Team.Messages.Events.Team.General.TeamUpdated, UpdateTeamCommand>().IgnoreAllNonExisting();
+        CreateMap<SFC.Team.Messages.Events.Team.General.TeamUpdated, CreateTeamCommand>().IgnoreAllNonExisting();
+        // commands
+        CreateMap<SFC.Team.Messages.Commands.Team.General.SeedTeams, CreateTeamsCommand>();
+        // models
+        CreateMap<IEnumerable<SFC.Team.Messages.Models.Team.General.Team>, CreateTeamsCommand>()
+           .ForMember(p => p.Teams, d => d.MapFrom(z => z));
+        CreateMap<SFC.Team.Messages.Models.Team.General.Team, TeamDto>()
+           .ForPath(p => p.Profile.General, d => d.MapFrom(z => z.GeneralProfile))
+           .ForPath(p => p.Profile.Financial, d => d.MapFrom(z => z.FinancialProfile))
+           .ForPath(p => p.Profile.Inventary.Shirts, d => d.MapFrom(z => z.Shirts))
+           .ForPath(p => p.Profile.General.Logo, d => d.MapFrom(z => z.Logo))
+           .ForPath(p => p.Profile.General.Availability, d => d.MapFrom(z => z.Availability))
+           .ForPath(p => p.Profile.General.Tags, d => d.MapFrom(z => z.Tags));
+        CreateMap<SFC.Team.Messages.Models.Team.General.TeamGeneralProfile, TeamGeneralProfileDto>();
+        CreateMap<SFC.Team.Messages.Models.Team.General.TeamFinancialProfile, TeamFinancialProfileDto>();
+        CreateMap<SFC.Team.Messages.Models.Team.General.TeamLogo, TeamLogoDto>();
+        CreateMap<SFC.Team.Messages.Models.Team.General.TeamAvailability, TeamAvailabilityDto>();
+        CreateMap<SFC.Team.Messages.Models.Team.General.TeamTag, string>().ConvertUsing(tag => tag.Value);
+        CreateMap<SFC.Team.Messages.Models.Team.General.TeamShirt, int>().ConvertUsing(shirt => shirt.ShirtId);
+#if (IncludePlayerInfrastructure && IncludeTeamInfrastructure)
+        // team player
+        // events
+        CreateMap<SFC.Team.Messages.Events.Team.Player.TeamPlayerCreated, CreateTeamPlayerCommand>().IgnoreAllNonExisting();
+        CreateMap<SFC.Team.Messages.Events.Team.Player.TeamPlayerUpdated, UpdateTeamPlayerCommand>().IgnoreAllNonExisting();
+        // models
+        CreateMap<IEnumerable<SFC.Team.Messages.Models.Team.Player.TeamPlayer>, CreateTeamPlayersCommand>()
+           .ForMember(p => p.TeamPlayers, d => d.MapFrom(z => z));
+        CreateMap<SFC.Team.Messages.Models.Team.Player.TeamPlayer, TeamPlayerDto>();
+#endif
+    }
+
+#endregion Team
+#endif
+
+    #region GeneralTemplate
+
+    private void CreateMapGeneralTemplateMessages()
+    {
+        // data
+        //commands
+        CreateMap<SFC.GeneralTemplate.Messages.Commands.Data.InitializeData, ResetDataCommand>().IgnoreAllNonExisting();
+#if IncludePlayerInfrastructure
+        CreateMap<SFC.GeneralTemplate.Messages.Models.Data.DataValue, FootballPositionDto>();
+        CreateMap<SFC.GeneralTemplate.Messages.Models.Data.DataValue, GameStyleDto>();
+        CreateMap<SFC.GeneralTemplate.Messages.Models.Data.DataValue, StatCategoryDto>();
+        CreateMap<SFC.GeneralTemplate.Messages.Models.Data.DataValue, StatSkillDto>();
+        CreateMap<SFC.GeneralTemplate.Messages.Models.Data.StatTypeDataValue, StatTypeDto>();
+        CreateMap<SFC.GeneralTemplate.Messages.Models.Data.DataValue, WorkingFootDto>();
+#endif
+#if IncludeTeamInfrastructure
+        CreateMap<SFC.GeneralTemplate.Messages.Models.Data.DataValue, ShirtDto>();
+#endif
+
+#if (IncludePlayerInfrastructure && IncludeTeamInfrastructure)
+        // team
+        // commands
+        CreateMap<SFC.GeneralTemplate.Messages.Commands.Team.Data.InitializeData, ResetTeamDataCommand>().IgnoreAllNonExisting();
+        //models
+        CreateMap<SFC.GeneralTemplate.Messages.Models.Data.DataValue, TeamPlayerStatusDto>();
+#endif
+
+        // generaltemplate
+        // events
+        CreateMap<GeneralTemplateEntity, GeneralTemplateCreated>()
+            .ForMember(p => p.GeneralTemplate, d => d.MapFrom(z => z));
+        CreateMap<GeneralTemplateEntity, GeneralTemplateUpdated>()
+            .ForMember(p => p.GeneralTemplate, d => d.MapFrom(z => z));
+        CreateMap<IEnumerable<GeneralTemplateEntity>, GeneralTemplateMultipleSeeded>()
+           .ForMember(p => p.GeneralTemplateMultiple, d => d.MapFrom(z => z));
+        //commands
+        CreateMap<IEnumerable<GeneralTemplateEntity>, SFC.GeneralTemplate.Messages.Commands.GeneralTemplate.SeedGeneralTemplateMultiple>()
+            .ForMember(p => p.GeneralTemplateMultiple, d => d.MapFrom(z => z));
+        // models
+        CreateMap<GeneralTemplateEntity, SFC.GeneralTemplate.Messages.Models.GeneralTemplate.GeneralTemplate>();
+    }
+
+    private static void CreateMapGeneralTemplateContracts()
+    {
+
+    }
+
+#endregion GeneralTemplate
 }

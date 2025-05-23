@@ -5,4 +5,7 @@ public static class Endpoint
 #if IncludePlayerInfrastructure
     public const string Player = "player";
 #endif
+#if IncludeTeamInfrastructure
+    public const string Team = "team";
+#endif
 }

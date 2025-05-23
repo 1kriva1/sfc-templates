@@ -3,7 +3,7 @@ using AutoMapper;
 
 using MediatR;
 
-using SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.Player;
+using SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.Player.General;
 
 namespace SFC.GeneralTemplate.Application.Features.Player.Commands.Create;
 

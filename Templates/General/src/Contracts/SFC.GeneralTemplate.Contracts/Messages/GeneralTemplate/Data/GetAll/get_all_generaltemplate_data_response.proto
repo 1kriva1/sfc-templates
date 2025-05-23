@@ -1,0 +1,11 @@
+﻿syntax = "proto3";
+
+package sfc_generaltemplate;
+
+import "Models/GeneralTemplate/Data/data_value.proto";
+
+option csharp_namespace = "SFC.GeneralTemplate.Contracts.Messages.GeneralTemplate.Data.GetAll";
+
+message GetAllGeneralTemplateDataResponse
+{    
+}

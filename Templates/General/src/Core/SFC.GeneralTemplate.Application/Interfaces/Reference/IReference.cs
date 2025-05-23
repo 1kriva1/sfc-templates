@@ -8,8 +8,8 @@ namespace SFC.GeneralTemplate.Application.Interfaces.Reference;
 /// <typeparam name="TEntity">Entity type.</typeparam>
 /// <typeparam name="TID">Entity identifier type.</typeparam>
 /// <typeparam name="TDto">Entity related DTO type.</typeparam>
-public interface IReference<TEntity, TID, TDto>
-    where TEntity : BaseEntity<TID>
+public interface IReference<TEntity, TId, TDto>
+    where TEntity : BaseEntity<TId>
 {
-    Task<TEntity?> GetAsync(TID id, CancellationToken cancellationToken = default);
+    Task<TEntity?> GetAsync(TId id, CancellationToken cancellationToken = default);
 }

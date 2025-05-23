@@ -171,4 +171,13 @@
   <data name="PlayerNotFound" xml:space="preserve">
     <value>Гравець не знайдений.</value>
   </data>
+  <data name="PlayerAlreadyInTeam" xml:space="preserve">
+    <value>Гравець вже в команді.</value>
+  </data>
+  <data name="TeamNotFound" xml:space="preserve">
+    <value>Команда не знайдена.</value>
+  </data>
+  <data name="TeamPlayerNotFound" xml:space="preserve">
+    <value>Такого гравця в команді немає.</value>
+  </data>
 </root>

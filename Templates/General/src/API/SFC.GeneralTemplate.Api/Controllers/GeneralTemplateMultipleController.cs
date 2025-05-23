@@ -3,17 +3,17 @@ using Microsoft.AspNetCore.Mvc;
 
 using SFC.GeneralTemplate.Api.Infrastructure.Extensions;
 using SFC.GeneralTemplate.Api.Infrastructure.Models.Base;
-using SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Create;
-using SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Find;
-using SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Get;
-using SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Update;
+using SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Create;
+using SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Find;
+using SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Get;
+using SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Update;
 using SFC.GeneralTemplate.Api.Infrastructure.Models.Pagination;
 using SFC.GeneralTemplate.Application.Features.Common.Base;
-using SFC.GeneralTemplate.Application.Features.GeneralTemplate.Commands.Create;
-using SFC.GeneralTemplate.Application.Features.GeneralTemplate.Commands.Update;
-using SFC.GeneralTemplate.Application.Features.GeneralTemplate.Queries.Find;
-using SFC.GeneralTemplate.Application.Features.GeneralTemplate.Queries.Find.Dto.Filters;
-using SFC.GeneralTemplate.Application.Features.GeneralTemplate.Queries.Get;
+using SFC.GeneralTemplate.Application.Features.GeneralTemplate.General.Commands.Create;
+using SFC.GeneralTemplate.Application.Features.GeneralTemplate.General.Commands.Update;
+using SFC.GeneralTemplate.Application.Features.GeneralTemplate.General.Queries.Find;
+using SFC.GeneralTemplate.Application.Features.GeneralTemplate.General.Queries.Find.Dto.Filters;
+using SFC.GeneralTemplate.Application.Features.GeneralTemplate.General.Queries.Get;
 using SFC.GeneralTemplate.Infrastructure.Constants;
 
 namespace SFC.GeneralTemplate.Api.Controllers;
@@ -85,7 +85,7 @@ public class GeneralTemplateMultipleController : ApiControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<GetGeneralTemplateResponse>> GetGeneralTemplateAsync([FromRoute] long id)
     {
-        GetGeneralTemplateQuery query = new() { GeneralTemplateId = id };
+        GetGeneralTemplateQuery query = new() { Id = id };
 
         GetGeneralTemplateViewModel generaltemplate = await Mediator.Send(query).ConfigureAwait(false);
 
@@ -105,17 +105,17 @@ public class GeneralTemplateMultipleController : ApiControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(BaseErrorResponse), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    public async Task<ActionResult<GetGeneralTemplatesResponse>> GetGeneralTemplatesAsync([FromQuery] GetGeneralTemplatesRequest request)
+    public async Task<ActionResult<GetGeneralTemplateMultipleResponse>> GetGeneralTemplateMultipleAsync([FromQuery] GetGeneralTemplateMultipleRequest request)
     {
-        BasePaginationRequest<GetGeneralTemplatesViewModel, GetGeneralTemplatesFilterDto> query = Mapper.Map<GetGeneralTemplatesQuery>(request);
+        BasePaginationRequest<GetGeneralTemplateMultipleViewModel, GetGeneralTemplateMultipleFilterDto> query = Mapper.Map<GetGeneralTemplateMultipleQuery>(request);
 
-        GetGeneralTemplatesViewModel result = await Mediator.Send(query).ConfigureAwait(false);
+        GetGeneralTemplateMultipleViewModel result = await Mediator.Send(query).ConfigureAwait(false);
 
         PageMetadataModel metadata = Mapper.Map<PageMetadataModel>(result.Metadata)
                                            .SetLinks(UriService, Request.QueryString.Value!, Request.Path.Value!);
 
         Response.AddPaginationHeader(metadata);
 
-        return Ok(Mapper.Map<GetGeneralTemplatesResponse>(result));
+        return Ok(Mapper.Map<GetGeneralTemplateMultipleResponse>(result));
     }
 }

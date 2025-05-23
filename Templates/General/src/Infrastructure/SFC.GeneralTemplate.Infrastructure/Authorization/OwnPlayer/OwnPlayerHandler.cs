@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 using SFC.GeneralTemplate.Infrastructure.Extensions;
-using SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.Player;
+using SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.Player.General;
 
 namespace SFC.GeneralTemplate.Infrastructure.Authorization.OwnPlayer;
 public class OwnPlayerHandler(IPlayerRepository playerRepository, IHttpContextAccessor httpContextAccessor)

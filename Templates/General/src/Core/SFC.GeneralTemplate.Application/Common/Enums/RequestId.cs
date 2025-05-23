@@ -4,6 +4,9 @@ public enum RequestId
     // main
     DatabaseReset,
     // core
+#if IncludeDataInfrastructure
+    GetAllGeneralTemplateData,
+#endif
     CreateGeneralTemplate,
     UpdateGeneralTemplate,
     GetGeneralTemplate,
@@ -18,6 +21,19 @@ public enum RequestId
     // player
     CreatePlayer,
     UpdatePlayer,
-    CreatePlayers
+    CreatePlayers,
+#endif
+#if IncludeTeamInfrastructure
+    // team
+    ResetTeamData,
+    CreateTeam,
+    UpdateTeam,
+    CreateTeams,    
+#endif
+#if (IncludePlayerInfrastructure && IncludeTeamInfrastructure)
+    // team player
+    CreateTeamPlayer,
+    UpdateTeamPlayer,
+    CreateTeamPlayers
 #endif
 }

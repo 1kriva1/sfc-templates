@@ -1,7 +1,5 @@
 ﻿using System.Linq.Expressions;
 
-using SFC.GeneralTemplate.Domain.Common.Interfaces;
-
 namespace SFC.GeneralTemplate.Application.Features.Common.Models.Find.Filters;
 
 /// <summary>

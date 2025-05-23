@@ -77,7 +77,7 @@ public static class SwaggerExtensions
 
         string? @namespace = type.Namespace;
 
-        string modelsPart = "SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplateMultiple.";
+        string modelsPart = "SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.";
 
         if (!string.IsNullOrEmpty(@namespace) && @namespace.Contains(modelsPart, StringComparison.InvariantCulture))
         {

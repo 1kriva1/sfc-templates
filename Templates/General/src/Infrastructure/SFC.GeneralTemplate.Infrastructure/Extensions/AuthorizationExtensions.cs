@@ -22,7 +22,15 @@ public static class AuthorizationExtensions
 #if IncludePlayerInfrastructure
     public static void AddOwnPlayerPolicy(this AuthorizationOptions options, IDictionary<string, IEnumerable<string>> claims)
     {
-        PolicyModel ownTeam = AuthorizationPolicies.OwnPlayer(claims);
+        PolicyModel ownPlayer = AuthorizationPolicies.OwnPlayer(claims);
+        options.AddPolicy(ownPlayer.Name, ownPlayer.Policy);
+    }
+#endif
+
+#if IncludeTeamInfrastructure
+    public static void AddOwnTeamPolicy(this AuthorizationOptions options, IDictionary<string, IEnumerable<string>> claims)
+    {
+        PolicyModel ownTeam = AuthorizationPolicies.OwnTeam(claims);
         options.AddPolicy(ownTeam.Name, ownTeam.Policy);
     }
 #endif

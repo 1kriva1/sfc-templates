@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using SFC.GeneralTemplate.Domain.Common;
 
 namespace SFC.GeneralTemplate.Infrastructure.Persistence.Configurations.Base;
-public class BaseEntityConfiguration<TEntity, TID> : IEntityTypeConfiguration<TEntity>
-    where TEntity : BaseEntity<TID>
-    where TID : struct
+public class BaseEntityConfiguration<TEntity, TId> : IEntityTypeConfiguration<TEntity>
+    where TEntity : BaseEntity<TId>
+    where TId : struct
 {
     public virtual void Configure(EntityTypeBuilder<TEntity> builder)
     {

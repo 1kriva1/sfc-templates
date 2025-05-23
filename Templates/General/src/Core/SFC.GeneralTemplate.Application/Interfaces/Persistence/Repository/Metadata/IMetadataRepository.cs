@@ -1,4 +1,5 @@
 ﻿using SFC.GeneralTemplate.Application.Interfaces.Persistence.Context;
+using SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.Common;
 
 namespace SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.Metadata;
 
@@ -13,5 +14,5 @@ public interface IMetadataRepository : IRepository<MetadataEntity, IMetadataDbCo
     /// <param name="service">Metadata service filter value.</param>
     /// <param name="type">Metadata type filter value.</param>
     /// <returns>Metadata entity or null.</returns>
-    Task<MetadataEntity?> GetByIdAsync(MetadataServiceEnum service, MetadataTypeEnum type);
+    Task<MetadataEntity?> GetByIdAsync(MetadataServiceEnum service, MetadataDomainEnum domain, MetadataTypeEnum type);
 }

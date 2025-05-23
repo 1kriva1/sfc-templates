@@ -4,7 +4,7 @@
         <name>SFC.GeneralTemplate.Api</name>
     </assembly>
     <members>
-        <member name="M:SFC.GeneralTemplate.Api.Controllers.GeneralTemplateMultipleController.CreateGeneralTemplateAsync(SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Create.CreateGeneralTemplateRequest)">
+        <member name="M:SFC.GeneralTemplate.Api.Controllers.GeneralTemplateMultipleController.CreateGeneralTemplateAsync(SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Create.CreateGeneralTemplateRequest)">
             <summary>
             Create new generaltemplate.
             </summary>
@@ -14,7 +14,7 @@
             <response code="400">Returns **validation** errors.</response>
             <response code="401">Returns when **failed** authentication.</response>
         </member>
-        <member name="M:SFC.GeneralTemplate.Api.Controllers.GeneralTemplateMultipleController.UpdateGeneralTemplateAsync(System.Int64,SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Update.UpdateGeneralTemplateRequest)">
+        <member name="M:SFC.GeneralTemplate.Api.Controllers.GeneralTemplateMultipleController.UpdateGeneralTemplateAsync(System.Int64,SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Update.UpdateGeneralTemplateRequest)">
             <summary>
             Update existing generaltemplate.
             </summary>
@@ -36,7 +36,7 @@
             <response code="401">Returns when **failed** authentication.</response>
             <response code="404">Returns when generaltemplate **not found** by unique identifier.</response>
         </member>
-        <member name="M:SFC.GeneralTemplate.Api.Controllers.GeneralTemplateMultipleController.GetGeneralTemplatesAsync(SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Find.GetGeneralTemplatesRequest)">
+        <member name="M:SFC.GeneralTemplate.Api.Controllers.GeneralTemplateMultipleController.GetGeneralTemplateMultipleAsync(SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Find.GetGeneralTemplateMultipleRequest)">
             <summary>
             Return list of generaltemplatemultiple
             </summary>
@@ -143,82 +143,97 @@
             Sorting **direction** (ascending or descending).
             </summary>
         </member>
-        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Common.BaseGeneralTemplateModel">
+        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.Data.Common.DataValueModel">
             <summary>
-            **Base** generaltemplate model.
+            Data value.
             </summary>
         </member>
-        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Common.GeneralTemplateModel">
+        <member name="P:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.Data.Common.DataValueModel.Id">
+            <summary>
+            Unique identificator of data type.
+            </summary>
+        </member>
+        <member name="P:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.Data.Common.DataValueModel.Title">
+            <summary>
+            Describe data type.
+            </summary>
+        </member>
+        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.Data.GetAll.GetAllGeneralTemplateDataResponse">
+            <summary>
+            Contain all available generaltemplate **data types**.
+            </summary>
+        </member>
+        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Common.GeneralTemplateModel">
             <summary>
             GeneralTemplate model.
             </summary>
         </member>
-        <member name="P:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Common.GeneralTemplateModel.Id">
+        <member name="P:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Common.GeneralTemplateModel.Id">
             <summary>
             Unique identifier.
             </summary>
         </member>
-        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Create.CreateGeneralTemplateModel">
+        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Create.CreateGeneralTemplateModel">
             <summary>
             **Create** generaltemplate model.
             </summary>
         </member>
-        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Create.CreateGeneralTemplateRequest">
+        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Create.CreateGeneralTemplateRequest">
             <summary>
             **Create** GeneralTemplate request.
             </summary>
         </member>
-        <member name="P:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Create.CreateGeneralTemplateRequest.GeneralTemplate">
+        <member name="P:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Create.CreateGeneralTemplateRequest.GeneralTemplate">
             <summary>
             GeneralTemplate model.
             </summary>
         </member>
-        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Create.CreateGeneralTemplateResponse">
+        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Create.CreateGeneralTemplateResponse">
             <summary>
             **Create** generaltemplate response model.
             </summary>
         </member>
-        <member name="P:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Create.CreateGeneralTemplateResponse.GeneralTemplate">
+        <member name="P:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Create.CreateGeneralTemplateResponse.GeneralTemplate">
             <summary>
             GeneralTemplate model.
             </summary>
         </member>
-        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Find.Filters.GetGeneralTemplatesFilterModel">
+        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Find.Filters.GetGeneralTemplateMultipleFilterModel">
             <summary>
             Get generaltemplatemultiple filter model.
             </summary>
         </member>
-        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Find.GetGeneralTemplatesRequest">
+        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Find.GetGeneralTemplateMultipleRequest">
             <summary>
             **Get** generaltemplatemultiple request.
             </summary>
         </member>
-        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Find.GetGeneralTemplatesResponse">
+        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Find.GetGeneralTemplateMultipleResponse">
             <summary>
             **Get** generaltemplatemultiple response.
             </summary>
         </member>
-        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Get.GetGeneralTemplateResponse">
+        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Get.GetGeneralTemplateResponse">
             <summary>
             **Get** generaltemplate response.
             </summary>
         </member>
-        <member name="P:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Get.GetGeneralTemplateResponse.GeneralTemplate">
+        <member name="P:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Get.GetGeneralTemplateResponse.GeneralTemplate">
             <summary>
             GeneralTemplate model.
             </summary>
         </member>
-        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Update.UpdateGeneralTemplateModel">
+        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Update.UpdateGeneralTemplateModel">
             <summary>
             **Update** generaltemplate model.
             </summary>
         </member>
-        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Update.UpdateGeneralTemplateRequest">
+        <member name="T:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Update.UpdateGeneralTemplateRequest">
             <summary>
             **Update** generaltemplate request.
             </summary>
         </member>
-        <member name="P:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplates.Update.UpdateGeneralTemplateRequest.GeneralTemplate">
+        <member name="P:SFC.GeneralTemplate.Api.Infrastructure.Models.GeneralTemplate.General.Update.UpdateGeneralTemplateRequest.GeneralTemplate">
             <summary>
             GeneralTemplate model.
             </summary>

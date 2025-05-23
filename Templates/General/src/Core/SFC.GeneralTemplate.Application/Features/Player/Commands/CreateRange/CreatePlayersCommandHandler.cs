@@ -3,11 +3,10 @@ using AutoMapper;
 
 using MediatR;
 
-using SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.Player;
+using SFC.GeneralTemplate.Application.Interfaces.Persistence.Repository.Player.General;
 using SFC.GeneralTemplate.Domain.Events.Player;
 
 namespace SFC.GeneralTemplate.Application.Features.Player.Commands.CreateRange;
-
 public class CreatePlayersCommandHandler(
     IMapper mapper,
     IMediator mediator,
