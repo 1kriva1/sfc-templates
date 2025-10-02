@@ -87,7 +87,11 @@ public class MappingProfile : BaseMappingProfile
 #if IncludeTeamInfrastructure
         #region Team
 
+        // messages
         CreateMapTeamMessages();
+
+        // contracrs
+        CreateMapTeamContracts();
 
         #endregion Team
 #endif
@@ -254,6 +258,19 @@ public class MappingProfile : BaseMappingProfile
            .ForMember(p => p.TeamPlayers, d => d.MapFrom(z => z));
         CreateMap<SFC.Team.Messages.Models.Team.Player.TeamPlayer, TeamPlayerDto>();
 #endif
+    }
+
+    private void CreateMapTeamContracts()
+    {
+        CreateMap<long, SFC.Team.Contracts.Messages.Team.General.Get.GetTeamRequest>()
+            .ConvertUsing(id => new SFC.Team.Contracts.Messages.Team.General.Get.GetTeamRequest { Id = id });
+
+        CreateMap<SFC.Team.Contracts.Models.Team.General.Team, TeamDto>();
+        CreateMap<SFC.Team.Contracts.Models.Team.General.TeamProfile, TeamProfileDto>();
+        CreateMap<SFC.Team.Contracts.Models.Team.General.TeamAvailability, TeamAvailabilityDto>();
+        CreateMap<SFC.Team.Contracts.Models.Team.General.TeamFinancialProfile, TeamFinancialProfileDto>();
+        CreateMap<SFC.Team.Contracts.Models.Team.General.TeamGeneralProfile, TeamGeneralProfileDto>();
+        CreateMap<SFC.Team.Contracts.Models.Team.General.TeamInventaryProfile, TeamInventaryProfileDto>();
     }
 
 #endregion Team
